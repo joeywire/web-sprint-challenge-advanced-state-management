@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+
+import { postNewSmurf } from "../actions/smurfActions";
 import smurfReducer from "../reducers/smurfReducer";
 
 
-const SmurfForm = () => {
+const SmurfForm = (props) => {
     const initialSmurf = {
         name: "",
         age: "",
@@ -20,7 +23,7 @@ const SmurfForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        //Axios Post Action
+        props.postNewSmurf(newSmurf);
         setNewSmurf(initialSmurf);
     }
     return (
@@ -54,4 +57,12 @@ const SmurfForm = () => {
     )
 }
 
-export default SmurfForm;
+const mapStateToProps = (state) => {
+    return {
+        isLoading: state.isLoading,
+        error: state.error, 
+        smurfs: state.smurfs
+    }
+}
+
+export default connect(mapStateToProps, {postNewSmurf})(SmurfForm);
