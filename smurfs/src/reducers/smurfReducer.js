@@ -15,8 +15,4 @@ const smurfReducer = (state = initialState, action) => {
 
 export default smurfReducer;
 
-// {
-//     name: 'Brainey',
-//     age: 200,
-//     height: '5cm'
-//   }
+// {name: 'Brainey', age: 200, height: '5cm'}

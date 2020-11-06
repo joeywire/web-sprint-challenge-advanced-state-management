@@ -5,7 +5,7 @@ import smurfReducer from "../reducers/smurfReducer";
 const SmurfForm = () => {
     const initialSmurf = {
         name: "",
-        age: null,
+        age: "",
         height: ""
     }
 
@@ -16,6 +16,12 @@ const SmurfForm = () => {
             ...newSmurf,
             [e.target.name]: e.target.value
         })
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        //Axios Post Action
+        setNewSmurf(initialSmurf);
     }
     return (
         <div className="smurfForm">
@@ -43,6 +49,7 @@ const SmurfForm = () => {
                     placeholder="Enter Smurfs Height..."
                 />
             </div>
+            <button onClick={handleSubmit}>Add Your Smurf!</button>
         </div>
     )
 }
