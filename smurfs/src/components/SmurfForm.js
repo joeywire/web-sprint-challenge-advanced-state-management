@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
-import { postNewSmurf } from "../actions/smurfActions";
+import { postNewSmurf, getInitialSmurfs } from "../actions/smurfActions";
 
 
 
@@ -13,6 +13,10 @@ const SmurfForm = (props) => {
     }
 
     const [newSmurf, setNewSmurf] = useState(initialSmurf)
+
+    useEffect(() => {
+        props.getInitialSmurfs();
+    }, []);
 
     const handleChange = e => {
         setNewSmurf({
@@ -59,10 +63,10 @@ const SmurfForm = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        isLoading: state.isLoading,
-        error: state.error, 
-        smurfs: state.smurfs
+        // isLoading: state.isLoading,
+        // error: state.error, 
+        // smurfs: state.smurfs
     }
 }
 
-export default connect(mapStateToProps, {postNewSmurf})(SmurfForm);
+export default connect(mapStateToProps, {postNewSmurf, getInitialSmurfs})(SmurfForm);

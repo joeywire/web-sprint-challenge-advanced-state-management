@@ -6,6 +6,8 @@ const SmurfList = (props) => {
     return (
         <div className="smurfList">
             <h3>Your Smurfs!</h3>
+            {props.isLoading ? <p>Loading....</p> : null}
+            {props.error ? <p> {props.error} </p> : null}
             {props.smurfs.map(smurf => (
                 <div className="smurf">
                     <p>Name: {smurf.name}</p>
